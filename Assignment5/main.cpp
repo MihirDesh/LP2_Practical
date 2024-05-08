@@ -2,34 +2,29 @@
 #include <vector>
 #include <queue>
 #include <climits>
-
 using namespace std;
 
 typedef pair<int, int> pii;
 
-// Graph representation using adjacency list
 class Graph
 {
 private:
-    int V;                   // Number of vertices
-    vector<vector<pii>> adj; // Adjacency list: (neighbor, weight)
+    int V;
+    vector<vector<pii>> adj;
 
 public:
     Graph(int v) : V(v), adj(v) {}
 
-    // Add an undirected edge to the graph
-    void addEdge(int u, int v, int weight)
+    void addEdge(int u, int v.int weight)
     {
         adj[u].push_back({v, weight});
         adj[v].push_back({u, weight});
     }
 
-    // Dijkstra's algorithm to find shortest paths from a source vertex
     vector<int> dijkstraMST(int source)
     {
         vector<int> dist(V, INT_MAX);
-        priority_queue<pii, vector<pii>, greater<pii>> minHeap; // (distance, vertex)
-
+        priority_queue<pii, vector<pii>, greater<pii>> minHeap;
         dist[source] = 0;
         minHeap.push({0, source});
 
@@ -38,10 +33,10 @@ public:
             int u = minHeap.top().second;
             minHeap.pop();
 
-            for (auto &neighbor : adj[u])
+            for (auto neighbour : adj[u])
             {
-                int v = neighbor.first;
-                int weight = neighbor.second;
+                int v = neighbour.first;
+                int weight = neighbour.second;
 
                 if (dist[u] + weight < dist[v])
                 {
@@ -50,7 +45,6 @@ public:
                 }
             }
         }
-
         return dist;
     }
 };

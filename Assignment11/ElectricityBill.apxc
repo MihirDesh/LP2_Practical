@@ -1,0 +1,14 @@
+public class ElectricityBillCalculator {
+    
+    // Method to calculate electricity bill based on units consumed
+    public static Decimal calculateElectricityBill(Integer unitsConsumed) {
+        Decimal ratePerUnit = 10.0; // Rate per unit of electricity (adjust as needed)
+        Decimal totalBill = unitsConsumed * ratePerUnit;
+        return totalBill;
+    }
+}
+
+// Calculate electricity bill for 150 units consumed
+Integer unitsConsumed = 150;
+Decimal billAmount = ElectricityBillCalculator.calculateElectricityBill(unitsConsumed);
+System.debug('Electricity Bill Amount: $' + billAmount);
